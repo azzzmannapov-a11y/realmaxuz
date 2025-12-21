@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Real Max – Plastik idishlar va konteynerlar</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Yuqori panel (telefon, telegram, til) -->
+  <div class="topbar">
+    <div class="container topbar-inner">
+      <div class="topbar-left">
+        <span class="topbar-phone">+998 90 000 00 00</span>
+        <span class="topbar-sep">•</span>
+        <a href="#" class="topbar-link" data-i18n="topbar_telegram">Написать в Telegram</a>
+      </div>
+      <div class="topbar-right">
+        <button class="lang-chip" data-lang="uz">Uz</button>
+        <button class="lang-chip active" data-lang="ru">Ru</button>
+        <button class="lang-chip" data-lang="en">En</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header / Nav -->
+  <header class="header">
+    <div class="container header-inner">
+      <a class="logo" href="index.html" aria-label="Real Max">
+        <span class="logo-mark">R</span>
+        <span class="logo-text">Real Max</span>
+      </a>
+
+      <nav class="nav-main" aria-label="Main navigation">
+        <a class="nav-link nav-link-active" href="about.html" data-i18n="nav_about">О компании</a>
+        <a class="nav-link" href="partners.html" data-i18n="nav_partners">Партнёры</a>
+        <a class="nav-link" href="contact.html" data-i18n="nav_contact">Связаться</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero + asosiy banner -->
+  <section class="hero">
+    <div class="container hero-inner">
+      <div class="hero-left">
+        <div class="hero-label" data-i18n="hero_label">Для заводов и дистрибьюторов</div>
+
+        <h1 data-i18n="hero_title">
+          Премиальные пластиковые контейнеры<br>Real Max — напрямую от производителя
+        </h1>
+
+        <p class="hero-text" data-i18n="hero_text">
+          Качественный полипропилен, удобные формы, разные объёмы и возможность брендинга.
+          Надёжное решение для одноразовой посуды и контейнеров.
+        </p>
+
+        <div class="hero-actions">
+          <a href="#hits" class="btn primary" data-i18n="hero_btn_hits">Хиты продаж</a>
+          <a href="#categories" class="btn ghost" data-i18n="hero_btn_categories">Все категории</a>
+        </div>
+
+        <div class="hero-stats">
+          <div class="stat-item">
+            <span class="stat-number">150+</span>
+            <span class="stat-label" data-i18n="stat_1">видов контейнеров</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">10+</span>
+            <span class="stat-label" data-i18n="stat_2">лет опыта</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">1000+</span>
+            <span class="stat-label" data-i18n="stat_3">партнёрских компаний</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-right">
+        <div class="hero-product-card">
+          <div class="hero-product-image"></div>
+          <div class="hero-product-info">
+            <h3 data-i18n="hero_card_title">Термо контейнер + крышка</h3>
+            <p data-i18n="hero_card_text">Хорошая теплоизоляция — удобно для горячих блюд.</p>
+            <a href="#hits" class="btn mini" data-i18n="hero_card_btn">Смотреть</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Kategoriyalar bo‘limi -->
+  <section id="categories" class="section">
+    <div class="container">
+      <div class="section-header">
+        <h2 data-i18n="cat_title">Категории товаров</h2>
+        <p data-i18n="cat_sub">Выберите нужное направление из ассортимента Real Max.</p>
+      </div>
+
+      <div class="category-grid">
+        <a href="#" class="category-card">
+          <h3 data-i18n="cat_1_title">Пластиковые контейнеры</h3>
+          <p data-i18n="cat_1_text">Разные формы и объёмы для упаковки продуктов.</p>
+        </a>
+        <a href="#" class="category-card">
+          <h3 data-i18n="cat_2_title">Круглые ёмкости</h3>
+          <p data-i18n="cat_2_text">Для соусов, салатов, десертов и др.</p>
+        </a>
+        <a href="#" class="category-card">
+          <h3 data-i18n="cat_3_title">Секционные контейнеры</h3>
+          <p data-i18n="cat_3_text">Несколько отделений — идеально для готовых блюд.</p>
+        </a>
+        <a href="#" class="category-card">
+          <h3 data-i18n="cat_4_title">Одноразовая посуда</h3>
+          <p data-i18n="cat_4_text">Решения для fast food, кафе и ресторанов.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Hit mahsulotlar -->
+  <section id="hits" class="section section-alt">
+    <div class="container">
+      <div class="section-header section-header-row">
+        <div>
+          <h2 data-i18n="hits_title">Хиты продаж</h2>
+          <p data-i18n="hits_sub">Самые популярные и часто запрашиваемые позиции.</p>
+        </div>
+        <div class="tabs">
+          <button class="tab active" data-i18n="tab_all">Все</button>
+          <button class="tab" data-i18n="tab_cont">Контейнеры</button>
+          <button class="tab" data-i18n="tab_cups">Стаканы</button>
+          <button class="tab" data-i18n="tab_dishes">Посуда</button>
+        </div>
+      </div>
+
+      <div class="product-grid">
+        <div class="product-card">
+          <div class="product-badge" data-i18n="badge_hit">Хит</div>
+          <div class="product-img"></div>
+          <div class="product-body">
+            <h3 data-i18n="p1_title">Прямоугольный контейнер 750 мл</h3>
+            <p class="product-cat" data-i18n="p1_cat">Контейнер</p>
+            <p class="product-price">2 100 UZS</p>
+            <button class="btn mini full" data-i18n="cta_request_price">Запросить цену</button>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-img"></div>
+          <div class="product-body">
+            <h3 data-i18n="p2_title">Круглый стакан + крышка 500 мл</h3>
+            <p class="product-cat" data-i18n="p2_cat">Стакан</p>
+            <p class="product-price">1 400 UZS</p>
+            <button class="btn mini full" data-i18n="cta_request_price">Запросить цену</button>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-img"></div>
+          <div class="product-body">
+            <h3 data-i18n="p3_title">Секционный контейнер (3 отделения)</h3>
+            <p class="product-cat" data-i18n="p3_cat">Секционный</p>
+            <p class="product-price">2 800 UZS</p>
+            <button class="btn mini full" data-i18n="cta_request_price">Запросить цену</button>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-img"></div>
+          <div class="product-body">
+            <h3 data-i18n="p4_title">Термо супница 650 мл</h3>
+            <p class="product-cat" data-i18n="p4_cat">Для горячих блюд</p>
+            <p class="product-price">1 350 UZS</p>
+            <button class="btn mini full" data-i18n="cta_request_price">Запросить цену</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Brending xizmatlari bo‘limi -->
+  <section class="section branding">
+    <div class="container branding-inner">
+      <div class="branding-text">
+        <h2 data-i18n="brand_title">Брендинг на контейнерах</h2>
+        <p data-i18n="brand_text">
+          Нанесём логотип, фирменные цвета и дизайн на продукцию Real Max. Упаковка — это тоже реклама.
+        </p>
+        <ul>
+          <li data-i18n="brand_li1">• Нанесение логотипа на крышку и корпус</li>
+          <li data-i18n="brand_li2">• Цветная печать и минималистичные варианты</li>
+          <li data-i18n="brand_li3">• Скидки для крупного опта</li>
+        </ul>
+        <a class="btn primary" href="contact.html" data-i18n="brand_btn">Получить консультацию</a>
+      </div>
+      <div class="branding-visual">
+        <div class="branding-img"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Yangiliklar / blog preview -->
+  <section class="section news">
+    <div class="container">
+      <div class="section-header">
+        <h2 data-i18n="news_title">Новости и полезные материалы</h2>
+        <p data-i18n="news_sub">Тренды рынка и советы от Real Max.</p>
+      </div>
+      <div class="news-grid">
+        <article class="news-card">
+          <div class="news-img"></div>
+          <div class="news-body">
+            <span class="news-date">12.05.2025</span>
+            <h3 data-i18n="n1_title">Как выбрать термо контейнер для горячих блюд</h3>
+            <p data-i18n="n1_text">
+              Объём, форма, толщина стенок — короткие рекомендации по выбору оптимального термо контейнера...
+            </p>
+            <a href="about.html" class="news-link" data-i18n="read_more">Читать далее</a>
+          </div>
+        </article>
+
+        <article class="news-card">
+          <div class="news-img"></div>
+          <div class="news-body">
+            <span class="news-date">28.04.2025</span>
+            <h3 data-i18n="n2_title">Одноразовая посуда для кафе и ресторанов: что выбрать</h3>
+            <p data-i18n="n2_text">
+              Какие форматы удобнее для take-away и delivery, что лучше воспринимают клиенты...
+            </p>
+            <a href="about.html" class="news-link" data-i18n="read_more">Читать далее</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-col">
+        <h4>Real Max</h4>
+        <p data-i18n="footer_about">Производитель пластиковых контейнеров и одноразовой посуды.</p>
+      </div>
+      <div class="footer-col">
+        <h4 data-i18n="footer_company">Компания</h4>
+        <a href="about.html" data-i18n="footer_about_link">О нас</a>
+        <a href="partners.html" data-i18n="footer_partners_link">Партнёры</a>
+        <a href="contact.html" data-i18n="footer_contacts">Контакты</a>
+      </div>
+      <div class="footer-col">
+        <h4 data-i18n="footer_contact">Связь</h4>
+        <p data-i18n="footer_tel">Тел: +998 90 000 00 00</p>
+        <p data-i18n="footer_email">Email: info@realmax.uz</p>
+        <p data-i18n="footer_city">г. Ташкент</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container footer-bottom-inner">
+        <span data-i18n="footer_copy">© Real Max, 2025. Все права защищены.</span>
+        <span data-i18n="footer_design">Website design: Siz</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
