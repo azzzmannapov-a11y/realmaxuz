@@ -19,6 +19,7 @@
   margin: 0;
   padding: 0;
 }
+.product-img img { width:100%; height:100%; object-fit:cover; display:block; }
 
 html, body {
   font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
@@ -151,19 +152,41 @@ img { max-width: 100%; display: block; }
   color: #ffffff;
   border-color: var(--brand);
 }
+.hero-desc{
+  margin-top: 16px;
+  max-width: 560px;
+}
+
+.hero-desc p{
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--text-muted);
+  margin-bottom: 10px;
+}
 
 /* Hero */
-.hero {
-  background: linear-gradient(135deg, #f2f7fb, #ffffff);
-  padding: 40px 0 60px;
+
+.hero{
+  min-height: calc(100vh - 110px);
+  display:flex;
+  align-items:center;
+  position: relative;
+  overflow: hidden;
+
+  /* layered premium gradient */
+  background:
+    radial-gradient(600px 600px at 15% 20%, rgba(97,201,225,0.45), transparent 60%),
+    radial-gradient(520px 520px at 105% 100%, rgba(97,201,225,0.25), transparent 150%),
+    linear-gradient(135deg, #eef6fb 0%, #ffffff 55%);
+  
   border-bottom: 1px solid var(--border-soft);
 }
 
 .hero-inner {
   display: grid;
-  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
-  gap: 40px;
+  grid-template-columns: 1.3fr 0.7fr; /* chapga ko‘proq joy */
   align-items: center;
+  gap: 48px;
 }
 
 .hero-label {
@@ -178,9 +201,35 @@ img { max-width: 100%; display: block; }
 
 .hero h1 {
   font-family: 'Poppins', system-ui;
-  font-size: 30px;
+  font-size: 50px;
   line-height: 1.25;
   margin-bottom: 14px;
+}
+
+/* ===== Real Max yondashuvi — oq gradient ===== */
+.rm-values{
+  position: relative;
+  background-color: #61C9E1; /* asosiy ko‘k */
+  overflow: hidden;
+}
+
+.rm-values::before{
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background:
+    radial-gradient(900px 500px at 50% 0%, rgba(255,255,255,0.35), transparent 65%),
+    radial-gradient(700px 450px at 20% 60%, rgba(255,255,255,0.18), transparent 70%),
+    radial-gradient(700px 450px at 80% 60%, rgba(255,255,255,0.18), transparent 70%);
+
+  pointer-events: none;
+}
+
+/* textlar ustida qolsin */
+.rm-values > .container{
+  position: relative;
+  z-index: 2;
 }
 
 .hero-text {
@@ -242,8 +291,9 @@ img { max-width: 100%; display: block; }
 .hero-right { display: flex; justify-content: center; }
 
 .hero-product-card {
-  width: 100%;
-  max-width: 360px;
+  width: 140%;
+  max-width: 960px;   /* 860 → 960 */
+  aspect-ratio: 1 / 1;
   border-radius: var(--radius-lg);
   background-color: #ffffff;
   border: 1px solid var(--border-soft);
@@ -251,10 +301,8 @@ img { max-width: 100%; display: block; }
   overflow: hidden;
 }
 
-.hero-product-image {
-  height: 190px;
-  background: radial-gradient(circle at top, var(--brand-soft), #ffffff);
-}
+
+
 
 .hero-product-info { padding: 14px 16px 16px; }
 .hero-product-info h3 {
@@ -363,7 +411,7 @@ img { max-width: 100%; display: block; }
 }
 
 .product-img {
-  height: 150px;
+  height: 250px;
   background: linear-gradient(135deg, var(--brand-soft), #ffffff);
 }
 
@@ -723,4 +771,520 @@ img { max-width: 100%; display: block; }
 
 @media (max-width: 520px) {
   .product-grid { grid-template-columns: 1fr; }
+}
+/* HIT PRODUCTS – hover preview panel (FIXED) */
+.product-card.has-preview {
+  position: relative;
+  overflow: visible;
+}
+
+/* preview card — ustiga chiqadi */
+.product-card.has-preview .product-preview {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -145px;                 /* KARTANING USTIGA CHIQADI */
+  z-index: 20;
+
+  opacity: 0;
+  transform: translateY(10px) scale(0.96);
+  pointer-events: none;
+
+  transition: opacity 220ms ease, transform 220ms ease;
+}
+
+.product-card.has-preview:hover .product-preview {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+
+/* ichki pack card */
+.product-card.has-preview .preview-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 12px;
+
+  box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+}
+
+/* HAR IKKALA RASM UCHUN 1:1 KVADRAT */
+.product-card.has-preview .preview-col {
+  aspect-ratio: 1 / 1;        /* 👈 ENG MUHIM QATOR */
+  border-radius: 12px;
+  overflow: hidden;
+  background: #f4f5f7;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* RASMLAR O‘ZGARMAYDI, CHO‘ZILMAYDI */
+.product-card.has-preview .preview-col img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;        /* 👈 RASM BUZILMAYDI */
+  display: block;
+}
+
+/* karta hoverda ozgina premium ko‘tarilish */
+.product-card.has-preview:hover {
+  transform: translateY(-4px);
+  transition: transform 200ms ease;
+}
+
+/* mobil: hover yo‘q */
+@media (max-width: 900px) {
+  .product-card.has-preview .product-preview {
+    display: none;
+  }
+}
+/* =========================
+   CATALOG PAGE
+   ========================= */
+
+.catalog-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+  margin-top: 40px;
+}
+
+/* KATALOG CARD */
+.catalog-card {
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 18px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+  transition: transform 220ms ease, box-shadow 220ms ease;
+  cursor: pointer;
+}
+
+.catalog-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 50px rgba(0,0,0,0.12);
+}
+
+/* RASM */
+.catalog-card img {
+  width: 100%;
+  height: 220px;
+  object-fit: contain;
+  background: #f5f6f8;
+  border-radius: 14px;
+  padding: 16px;
+  margin-bottom: 16px;
+}
+
+/* SARLAVHA */
+.catalog-card h3 {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: #111;
+}
+
+/* MATN */
+.catalog-card p {
+  font-size: 15px;
+  line-height: 1.5;
+  color: #555;
+}
+
+/* KATALOG HERO */
+.section-title {
+  font-size: 36px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.section-sub {
+  font-size: 17px;
+  color: #666;
+  max-width: 720px;
+}
+
+/* CTA */
+.text-center {
+  text-align: center;
+}
+
+/* RESPONSIVE */
+@media (max-width: 1100px) {
+  .catalog-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 680px) {
+  .catalog-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .catalog-card img {
+    height: 180px;
+  }
+
+  .section-title {
+    font-size: 28px;
+  }
+}
+
+.hero-product-image {
+  aspect-ratio: 1 / 1;     /* 👈 KVADRAT */
+  width: 100%;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-product-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* rasm buzilmaydi */
+}
+
+/* ===== Real Max Carousel ===== */
+.rm-carousel {
+  position: relative;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-soft);
+  background: #ffffff;
+  box-shadow: var(--shadow-soft);
+  padding: 14px 44px; /* tugmalar uchun joy */
+}
+
+.rm-carousel-viewport {
+  overflow: hidden;
+}
+
+.rm-carousel-track {
+  display: flex;
+  gap: 16px;
+  will-change: transform;
+  transition: transform 500ms ease;
+}
+
+.rm-carousel-item {
+  flex: 0 0 100%;         /* kartaning eni */
+  aspect-ratio: 1 / 1;     /* KVADRAT */
+  border-radius: 18px;
+  border: 1px solid var(--border-soft);
+  background: #f5f6f8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.rm-carousel-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+/* ===== RM Carousel background (ORQA FON) ===== */
+.rm-carousel {
+  position: relative;
+  padding: 80px 60px;
+  background:
+    radial-gradient(
+      1000px 520px at 50% 0%,
+      rgba(97, 201, 225, 0.28),
+      rgba(255, 255, 255, 0) 70%
+    ),
+    linear-gradient(
+      180deg,
+      #ffffff 0%,
+      #f7fcfe 100%
+    );
+  border-radius: 24px;
+}
+/* ===== Catalog: 2-rasmli hover (pastdan ochiladi) ===== */
+.catalog-media{
+  position: relative;
+  height: 210px;           /* kerak bo‘lsa o‘zgartirasiz */
+  border-radius: 16px;
+  overflow: hidden;
+  background: #f3f5f7;
+  margin-bottom: 14px;
+}
+
+.catalog-img{
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: transform .45s ease, opacity .45s ease;
+}
+
+/* 1-rasm default */
+.catalog-img--main{
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* 2-rasm default pastda */
+.catalog-img--mock{
+  transform: translateY(100%);
+  opacity: 0;
+}
+
+/* hover: 2-rasm pastdan chiqadi */
+.catalog-card:hover .catalog-img--main{
+  transform: translateY(-12%);
+  opacity: .92;
+}
+
+.catalog-card:hover .catalog-img--mock{
+  transform: translateY(0);
+  opacity: 1;
+}
+
+
+/* Tugmalar */
+.rm-carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 34px;
+  height: 34px;
+  border-radius: 999px;
+  border: 1px solid var(--border-soft);
+  background: #ffffff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  color: var(--text-main);
+}
+
+.rm-carousel-btn:hover {
+  border-color: var(--brand);
+}
+
+.rm-carousel-btn.prev { left: 12px; }
+.rm-carousel-btn.next { right: 12px; }
+
+/* Mobil */
+@media (max-width: 520px) {
+  .rm-carousel { padding: 12px 40px; }
+  .rm-carousel-item { flex-basis: 220px; }
+}
+
+/* Carousel o'lchamini cheklash */
+.rm-carousel {
+  max-width: 1250px;     /* xohlasangiz 320/400 qilib o'zgartirasiz */
+  margin: 0 auto;       /* o'rtaga */
+  padding: 12px 44px;   /* tugmalar uchun */
+}
+
+/* Viewport kvadrat bo'lsin, lekin kattalashib ketmasin */
+.rm-carousel-viewport {
+  width: 100%;
+  max-width: 750px;
+  aspect-ratio: 1 / 1;
+  margin: 0 auto;
+  overflow: hidden;
+  border-radius: 18px;
+}
+
+/* Ichki item ham viewportga mos bo'ladi */
+.rm-carousel-item {
+  flex: 0 0 100%;
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 18px;
+  overflow: hidden;
+}
+
+/* Mobil uchun */
+@media (max-width: 520px) {
+  .rm-carousel,
+  .rm-carousel-viewport {
+    max-width: 280px;
+  }
+}
+/* ===== Real Max Values Section ===== */
+.rm-values {
+  background-color: #61C9E1; /* Genpak uslubidagi chuqur yashil */
+  color: #ffffff;
+  padding: 70px 0;
+}
+
+.rm-values-inner {
+  text-align: center;
+}
+
+.rm-values-title {
+  font-family: 'Poppins', system-ui;
+  font-size: 36px;
+  margin-bottom: 14px;
+}
+
+.rm-values-sub {
+  max-width: 720px;
+  margin: 0 auto 50px;
+  font-size: 16px;
+  line-height: 1.6;
+  opacity: 0.95;
+}
+
+.rm-values-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 40px;
+}
+
+.rm-value-item {
+  max-width: 300px;
+  margin: 0 auto;
+}
+
+.rm-value-icon {
+  font-size: 42px;
+  margin-bottom: 18px;
+}
+
+.rm-value-item h4 {
+  font-size: 18px;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.rm-value-item p {
+  font-size: 14px;
+  line-height: 1.6;
+  opacity: 0.9;
+}
+
+/* Mobil */
+@media (max-width: 900px) {
+  .rm-values-grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .rm-values-title {
+    font-size: 28px;
+  }
+}
+/* ===== Mission / Intro (Genpak-style, Real Max colors) ===== */
+.rm-mission {
+  background: #61C9E1;
+  padding: 56px 0;
+  border-top: 1px solid var(--border-soft);
+}
+
+.rm-mission-inner {
+  text-align: center;
+  max-width: 920px;
+}
+
+.rm-mission-title {
+  font-family: 'Poppins', system-ui;
+  font-size: 40px;
+  line-height: 1.15;
+  margin: 0 auto 14px;
+  color: #ffffff;
+}
+
+.rm-mission-line {
+  width: 240px;
+  height: 3px;
+  background: white; /* #61C9E1 */
+  margin: 0 auto 22px;
+  border-radius: 999px;
+}
+
+.rm-mission-lead {
+  font-style: italic;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 1.45;
+  color: #ffffff;
+  margin: 0 auto 22px;
+}
+
+.rm-mission-text {
+  font-size: 16px;
+  line-height: 1.75;
+  color: #ffffff;
+  margin: 0 auto;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .rm-mission { padding: 44px 0; }
+  .rm-mission-title { font-size: 28px; }
+  .rm-mission-lead { font-size: 16px; }
+  .rm-mission-text { font-size: 14px; }
+  .rm-mission-line { width: 180px; }
+}
+/* HIT rasm hoverda yaqinlashsin */
+.product-card .product-img {
+  overflow: hidden;
+  border-radius: 0; /* sizda karta tepasi allaqachon radius, xohlasangiz olib tashlang */
+}
+
+.product-card .product-img img {
+  transform: scale(1);
+  transition: transform 620ms ease;
+}
+
+.product-card:hover .product-img img {
+  transform: scale(1.08);
+}
+
+/* ===== HERO ENTRANCE (FIXED) ===== */
+.hero-left,
+.hero-product-card {
+  opacity: 0;
+  transition:
+    opacity 0.9s ease,
+    transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* chap text */
+.hero-left {
+  transform: translateX(-60px);
+}
+
+/* o‘ng rasm */
+.hero-product-card {
+  transform: translateX(60px);
+}
+
+/* aktiv holat */
+.hero-animate .hero-left,
+.hero-animate .hero-product-card {
+  opacity: 1;
+  transform: translateX(0);
+}
+/* ===== SCROLL REVEAL (BOTTOM → UP) ===== */
+.reveal-up {
+  opacity: 0;
+  transform: translateY(40px);
+  transition:
+    opacity 0.9s ease,
+    transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.reveal-up.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+@media (max-width: 768px) {
+  .hero-product-card {
+    aspect-ratio: 1 / 1;
+    max-width: 320px;
+  }
 }
